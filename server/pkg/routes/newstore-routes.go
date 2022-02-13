@@ -6,9 +6,9 @@ import (
 )
 
 var RegisterNewStoreRoutes = func(router *mux.Router) {
-	router.HandleFunc("/create/new", controllers.CreateNew).Methods("POST")
-	router.HandleFunc("/get/news", controllers.GetNews).Methods("GET")
-	router.HandleFunc("/get/new/id/{id}", controllers.GetNewById).Methods("GET")
-	router.HandleFunc("/update/new/id/{id}", controllers.UpdateNew).Methods("PUT")
-	router.HandleFunc("/delete/new/id/{id}", controllers.DeleteNew).Methods("DELETE")
+	router.HandleFunc("/create/news", controllers.CreateNew).Methods("POST")
+	router.HandleFunc("/list/news", controllers.GetNews).Methods("GET")
+	router.HandleFunc("/get/news/id/{id}", controllers.GetNewById).Methods("GET")
+	router.HandleFunc("/update/news/id/{id}", controllers.UpdateNew).Methods("PUT")
+	router.HandleFunc("/delete/news/id/{id}", controllers.DeleteNew).Methods("DELETE")
 }

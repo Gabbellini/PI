@@ -2,9 +2,17 @@
   <section class="newspapper">
     <h2 class="title">Jornal do grêmio</h2>
 
-    <carousel :settings="settings" :breakpoints="breakpoints" :wrapAround="true" >
+    <carousel
+      :breakpoints="breakpoints"
+      :settings="settings"
+      :wrapAround="true"
+    >
       <slide v-for="(item, index) in news" :key="index" class="carousel">
-        <card :title="item.title" :description="item.description" />
+        <card
+          :description="item.description"
+          :image="item.image"
+          :title="item.title"
+        />
       </slide>
       <template #addons>
         <Navigation />
@@ -15,29 +23,37 @@
 </template>
 
 <script>
-import { onMounted, ref } from "vue";
+import { onBeforeMount, ref } from "vue";
 import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide, Navigation, Pagination } from "vue3-carousel";
 
 import Card from "../Card.vue";
+import { newsUseCases } from "../../../../domain/usecases/news_use_cases";
 
 export default {
   components: { Carousel, Slide, Card, Navigation, Pagination },
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   setup() {
-    onMounted(() => {
-      fetch("http://localhost:3001/api/get")
-        .then((response) => response.json())
-        .then((response) => (news.value = response))
-        .catch((err) => alert(err));
+    const news = ref();
+    onBeforeMount(async () => {
+      const value = await loadNews();
+      news.value = value ? value : [];
     });
 
-    const news = ref([]);
+    const loadNews = async () => {
+      try {
+        return await newsUseCases.list();
+      } catch (e) {
+        alert(e);
+      }
+    };
+
     const settings = {
       itemsToShow: 1,
       snapAlign: "center",
     };
 
-    const breakpoints =  {
+    const breakpoints = {
       500: {
         itemsToShow: 1.0,
       },
@@ -51,7 +67,7 @@ export default {
       },
 
       650: {
-        itemsToShow: 1.55
+        itemsToShow: 1.55,
       },
 
       700: {
@@ -105,9 +121,7 @@ export default {
       1800: {
         itemsToShow: 4.5,
       },
-
-      
-    }
+    };
 
     return {
       news,
@@ -134,11 +148,9 @@ export default {
   font-size: 1.375rem;
 }
 
-
 .carousel {
   cursor: grab;
 }
-
 
 @media screen and (min-width: 600px) {
   .newspapper {

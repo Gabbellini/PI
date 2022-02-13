@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="assets">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/client/infraestructure/presentation/assets/lightslider-master.zip!/" />
+      <root url="jar://$PROJECT_DIR$/client/infraestructure/presentation/assets/OwlCarousel2-2.3.4.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

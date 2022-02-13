@@ -2,7 +2,7 @@
   <div class="home">
     <call class="section" id="call" />
     <missions class="section" />
-    <news class="section"/>
+    <news class="section" />
     <contact-us class="section" />
     <my-footer />
     <button-back-top class="btn" elementID="top" />
@@ -15,7 +15,7 @@ import Call from "../components/Home/Call.vue";
 import ContactUs from "../components/Home/ContactUs.vue";
 import Missions from "../components/Home/Missions.vue";
 import ButtonBackTop from "../components/Home/ButtonBackTop.vue";
-import News from '../components/Home/News.vue';
+import News from "../components/Home/News.vue";
 export default {
   components: { Call, Missions, ContactUs, MyFooter, ButtonBackTop, News },
 };

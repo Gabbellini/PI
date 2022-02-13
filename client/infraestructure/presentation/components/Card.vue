@@ -1,5 +1,5 @@
 <template>
-  <div class="card" :style="`background-image: url(${image})`">
+  <div :style="`background-image: url(${image})`" class="card">
     <div class="card__content">
       <h3 class="card__title">{{ title }}</h3>
       <p class="card__description">{{ description }}</p>
@@ -24,8 +24,8 @@ export default defineComponent({
 
     image: {
       required: false,
-      default: () =>
-        "https://images.pexels.com/photos/1464223/pexels-photo-1464223.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      type: String,
+      default: () => "",
     },
   },
 });
