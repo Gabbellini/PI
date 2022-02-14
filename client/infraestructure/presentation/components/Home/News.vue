@@ -173,9 +173,7 @@ export default {
 .title {
   text-align: center;
   color: var(--text-color);
-
   margin-bottom: 6rem;
-
   font-size: 1.375rem;
 }
 
@@ -183,7 +181,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.5rem;
   flex-wrap: wrap;
 }
 

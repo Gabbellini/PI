@@ -52,13 +52,13 @@ export default {
   justify-content: center;
 
   position: absolute;
-  right: -0.8rem;
-  top: -0.8rem;
+  right: 0.5rem;
+  top: 0.5rem;
 
   border: none;
   border-radius: 50%;
 
-  background: #121212;
+  background: #fafafa;
   z-index: 5;
 
   cursor: pointer;
@@ -71,7 +71,7 @@ export default {
   width: 50%;
   height: 1px;
 
-  background: #fff;
+  background: #000;
   border-radius: 4px;
 }
 
@@ -92,6 +92,8 @@ export default {
   max-height: 1100px;
 
   background: #fafafa;
+
+  animation: fade-in 0.2s forwards;
 }
 
 .content__image {
@@ -123,5 +125,15 @@ export default {
   font-size: 0.9rem;
   color: #4e4e4e;
   line-height: 1.5rem;
+}
+
+@keyframes fade-in {
+  0% {
+    transform: scale(0.5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 </style>

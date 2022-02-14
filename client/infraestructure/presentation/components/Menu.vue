@@ -41,7 +41,7 @@ export default defineComponent({
   z-index: 999998;
 
   background: #181818;
-  box-shadow: 2px 0px 4px #00000084;
+  box-shadow: 2px 0 4px #00000084;
 }
 
 .list {

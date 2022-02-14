@@ -1,19 +1,19 @@
 <template>
   <header class="header">
     <button
-      class="button"
       aria-label="Botão para abri o menu"
+      class="button"
       @click="toggleMenu"
     >
       <div :class="['btn', { open: isMenuOpened }]" />
     </button>
     <router-link :to="{ name: 'home' }">
       <img
+        alt="Logo do grêmio estudantil (auto falante)"
         class="logo"
-        width="158"
         height="40"
         src="../assets/static/logo-360px.webp"
-        alt="Logo do grêmio estudantil (auto falante)"
+        width="158"
       />
     </router-link>
   </header>
@@ -56,7 +56,7 @@ export default defineComponent({
   box-sizing: border-box;
   padding: 0 1rem;
 
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   background: var(--background-color);
 
   z-index: 1;

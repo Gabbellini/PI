@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
+import { defineComponent } from "vue";
 
 export default defineComponent({
   props: {
@@ -47,7 +47,6 @@ export default defineComponent({
   width: 100%;
   height: 100%;
 
-  padding: 0.5rem;
   box-sizing: border-box;
 
   cursor: pointer;
@@ -68,9 +67,9 @@ export default defineComponent({
 }
 
 .card__content {
-  padding: 0.5rem 0.5rem 0.5rem 0;
   box-sizing: border-box;
   width: 100%;
+  padding: 0.5rem;
 }
 
 .card__title {
