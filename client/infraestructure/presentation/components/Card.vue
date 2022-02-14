@@ -1,5 +1,6 @@
 <template>
-  <div :style="`background-image: url(${image})`" class="card">
+  <div class="card">
+    <div :style="`background-image: url(${image})`" class="card__image" />
     <div class="card__content">
       <h3 class="card__title">{{ title }}</h3>
       <p class="card__description">{{ description }}</p>
@@ -8,7 +9,7 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
   props: {
@@ -23,9 +24,13 @@ export default defineComponent({
     },
 
     image: {
+      required: true,
+      type: String,
+    },
+
+    width: {
       required: false,
       type: String,
-      default: () => "",
     },
   },
 });
@@ -39,53 +44,51 @@ export default defineComponent({
 
   justify-content: flex-end;
 
-  width: 350px;
-  height: 200px;
+  width: 100%;
+  height: 100%;
 
-  border-radius: 7px;
+  padding: 0.5rem;
+  box-sizing: border-box;
 
-  background-color: rgba(0, 0, 0, 0.5) !important;
-  background-blend-mode: color !important;
-  background-repeat: no-repeat !important;
+  cursor: pointer;
+  transition: 0.2s all linear;
+}
+
+.card:hover {
+  box-shadow: 0 0 10px rgba(0 0 0 / 20%);
+  transform: scale(1.02);
+}
+
+.card__image {
+  width: 100%;
+  height: 150px;
   background-size: cover !important;
   background-position: center !important;
-
-  box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.4);
-  margin: 1rem 0;
+  background-repeat: no-repeat !important;
 }
 
 .card__content {
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-end;
-
-  height: 100%;
-  width: 100%;
-
-  gap: 0.5rem;
-
-  padding: 0.8rem;
+  padding: 0.5rem 0.5rem 0.5rem 0;
   box-sizing: border-box;
-
-  background: rgba(0, 0, 0, 0.35);
-  color: #fafafa;
-
-  border-radius: 4px;
+  width: 100%;
 }
 
 .card__title {
   font-size: 1.2rem;
-  text-transform: uppercase;
-  text-align: left;
-  line-height: 1.5rem;
+  line-height: 1.4rem;
+  font-weight: bold;
+  color: #484848;
+  margin-bottom: 0.5rem;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card__description {
+  font-size: 0.9rem;
+  color: #4e4e4e;
+
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -93,5 +96,29 @@ export default defineComponent({
   text-align: left;
 
   line-height: 1.2rem;
+}
+
+@media screen and (min-width: 420px) {
+  .card__image {
+    height: 200px;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .card__image {
+    height: 250px;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .card__image {
+    height: 200px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .card__image {
+    height: 250px;
+  }
 }
 </style>

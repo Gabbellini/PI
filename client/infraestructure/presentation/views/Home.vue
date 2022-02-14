@@ -1,9 +1,10 @@
 <template>
   <div class="home">
-    <call class="section" id="call" />
+    <call id="call" class="section" />
     <missions class="section" />
     <news class="section" />
-    <contact-us class="section" />
+    <!-- remove it before launch-->
+    <contact-us v-if="false" class="section" />
     <my-footer />
     <button-back-top class="btn" elementID="top" />
   </div>
@@ -28,6 +29,7 @@ export default {
 
 .section {
   padding: 3.5rem 1rem;
+  box-sizing: border-box;
 }
 
 .btn {
