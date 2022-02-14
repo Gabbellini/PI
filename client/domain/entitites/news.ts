@@ -1,11 +1,11 @@
 export class News {
-  public id;
+  public ID;
   public title;
   public description;
   public image;
 
-  constructor(id = 0, title = "", description = "", image = "") {
-    this.id = id;
+  constructor(ID = 0, title = "", description = "", image = "") {
+    this.ID = ID;
     this.title = title;
     this.description = description;
     this.image = image;

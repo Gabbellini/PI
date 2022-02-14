@@ -2,9 +2,12 @@
   <div class="menu">
     <nav :class="['nav', isMenuOpened ? 'open' : 'close']">
       <ul class="list">
-        <li class="item item--goal">Nossos objetivos</li>
-        <li class="item item--contact">Entre em contato</li>
-        <li class="item item--newspaper">Jornal do grêmio</li>
+        <li class="item">
+          <router-link :to="{ name: 'news' }" class="link" @click="toggleMenu"
+            >Painel adminstrativo</router-link
+          >
+        </li>
+        <li class="item" @click="logout">Sair</li>
       </ul>
     </nav>
   </div>
@@ -24,9 +27,15 @@ export default defineComponent({
       return store.getters.isMenuOpened;
     });
 
+    const logout = () => {
+      localStorage.clear();
+      alert("Logout realizado");
+    };
+
     return {
       isMenuOpened,
       toggleMenu,
+      logout,
     };
   },
 });
@@ -49,6 +58,8 @@ export default defineComponent({
   flex-direction: column;
   padding: 2rem 0;
   box-sizing: border-box;
+  height: calc(100% - 60px);
+  justify-content: space-between;
 }
 
 .item {
@@ -69,27 +80,18 @@ export default defineComponent({
   background: #2d2d2d;
 }
 
-.item--goal::before {
-  content: url("../../../../../infraestructure/presentation/assets/static/goal.png");
-  position: relative;
-}
-
-.item--newspaper::before {
-  content: url("../../../../../infraestructure/presentation/assets/static/newspaper.png");
-  position: relative;
-}
-
-.item--contact::before {
-  content: url("../../../../../infraestructure/presentation/assets/static/contact.png");
-  position: relative;
-}
-
 .nav.close {
   animation: close-menu 0.25s forwards ease-in-out;
 }
 
 .nav.open {
   animation: open-menu 0.25s forwards ease-in-out;
+}
+
+.link {
+  text-decoration: none;
+  color: #fff;
+  text-transform: uppercase;
 }
 
 @keyframes close-menu {

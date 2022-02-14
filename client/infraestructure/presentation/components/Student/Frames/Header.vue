@@ -12,7 +12,7 @@
         alt="Logo do grêmio estudantil (auto falante)"
         class="logo"
         height="40"
-        src="infraestructure/presentation/assets/static/logo-360px.webp"
+        src="../../../../../infraestructure/presentation/assets/static/logo-360px.webp"
         width="158"
       />
     </router-link>

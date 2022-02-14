@@ -2,14 +2,23 @@
   <div class="parent-input">
     <label :for="id" class="label">{{ label }}</label>
     <input
-      v-if="type != 'textarea' && type != 'select'"
+      v-if="type !== 'text-area'"
       :id="id"
-      :disabled="disable"
       :name="name"
       :required="required"
       :type="type"
       :value="modelValue"
       class="input"
+      @input="$emit('update:modelValue', $event.target.value)"
+    />
+    <textarea
+      v-else
+      :id="id"
+      :name="name"
+      :required="required"
+      :type="type"
+      :value="modelValue"
+      class="input text-area"
       @input="$emit('update:modelValue', $event.target.value)"
     />
   </div>
@@ -28,7 +37,7 @@ export default defineComponent({
     required: {
       type: Boolean,
       required: false,
-      defalut: false,
+      default: false,
     },
 
     label: {
@@ -81,5 +90,11 @@ input:-webkit-autofill:active {
   color: var(--text-color);
 
   padding: 0.5rem;
+}
+
+.text-area {
+  resize: vertical;
+  min-height: 100px;
+  max-height: 200px;
 }
 </style>

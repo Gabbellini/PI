@@ -34,7 +34,7 @@ export default {
   components: { BaseInput },
 
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  setup(_, { emit }) {
+  setup(_: any, { emit }: any) {
     const email = ref("");
     const password = ref("");
 

@@ -26,7 +26,7 @@ class NewsRepository {
   }
 
   async edit(news: News): Promise<News> {
-    const response = await http.put(`/update/news/id/${news.id}`);
+    const response = await http.put(`/update/news/id/${news.ID}`, news);
     return response.data;
   }
 
