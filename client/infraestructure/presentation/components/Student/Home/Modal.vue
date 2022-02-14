@@ -105,7 +105,7 @@ export default {
 }
 
 .content__information {
-  padding: 1rem;
+  padding: 3rem;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -122,6 +122,7 @@ export default {
 }
 
 .content__description {
+  text-align: justify;
   font-size: 0.9rem;
   color: #4e4e4e;
   line-height: 1.5rem;

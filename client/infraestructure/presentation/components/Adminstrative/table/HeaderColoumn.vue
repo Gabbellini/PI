@@ -35,6 +35,11 @@ export default {
       type: String,
       required: false,
     },
+
+    maxLines: {
+      required: false,
+      type: [String, Number],
+    },
   },
 };
 </script>

@@ -16,15 +16,18 @@
               :key="index"
               :horizontalAlignment="object.horizontalAlignment"
               :is-sortable="object.isSortable"
+              :max-lines="1"
               :order-by="object.orderBy"
               :width-per-cent="object.widthPerCent"
+              class="column"
             >
               {{ object.title }}
             </header-column>
             <header-column
               :is-sortable="false"
+              class="column"
               horizontal-alignment="center"
-              width-per-cent="10"
+              width-per-cent="15"
               >Ação</header-column
             >
           </t-line>
@@ -42,10 +45,15 @@
               :key="index"
               :horizontalAlignment="header[index].horizontalAlignment"
               :width-per-cent="header[index].widthPerCent"
+              class="column"
             >
               <span>{{ news[attribute] }}</span>
             </Column>
-            <Column horizontal-alignment="center" width-per-cent="10">
+            <Column
+              class="column"
+              horizontal-alignment="center"
+              width-per-cent="15"
+            >
               <action-button
                 action-type="edit"
                 class="action-button"
@@ -124,9 +132,11 @@ export default {
       input.value = payload;
     }
 
-    async function deleteNews(news: News) {
+    async function deleteNews(currentNews: News) {
       try {
-        await newsUseCases.delete(news.ID);
+        await newsUseCases.delete(currentNews.ID);
+        news.value = await newsUseCases.list();
+        console.log(news.value);
       } catch (e) {
         console.log(e);
       }
@@ -175,5 +185,30 @@ export default {
 
 .action-button:first-of-type {
   margin-right: 0.5rem;
+}
+
+.column:nth-child(2) > span {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.column:nth-child(3) {
+  display: none;
+}
+
+.column:last-of-type {
+  width: 35% !important;
+}
+
+@media screen and (min-width: 760px) {
+  .column:nth-child(3) {
+    display: flex;
+  }
+
+  .column:last-of-type {
+    width: 15% !important;
+  }
 }
 </style>
