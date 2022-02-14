@@ -8,6 +8,7 @@
 import Login from "../../components/Adminstrative/Login";
 import { Credentials } from "../../../../domain/entitites/Credentials";
 import { authenticationUseCases } from "../../../../domain/usecases/authentication_use_cases";
+import router from "../../../../src/router";
 
 export default {
   name: "AdministrativePanel",
@@ -15,8 +16,13 @@ export default {
 
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   setup() {
-    const login = (credentials: Credentials) => {
-      authenticationUseCases.login(credentials);
+    const login = async (credentials: Credentials) => {
+      try {
+        await authenticationUseCases.login(credentials);
+        await router.push({ name: "news" });
+      } catch (e) {
+        console.log(e);
+      }
     };
 
     return {

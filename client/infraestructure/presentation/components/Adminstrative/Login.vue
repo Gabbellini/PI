@@ -40,8 +40,8 @@ export default {
 
     const login = () => {
       const credentials = {
-        email,
-        password,
+        email: email.value,
+        password: password.value,
       };
       emit("login", credentials);
     };

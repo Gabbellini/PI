@@ -17,7 +17,7 @@ type New struct {
 func init() {
 	config.Connect()
 	db = config.GetDB()
-	db.AutoMigrate(&New{})
+	db.AutoMigrate(&New{}, &User{})
 }
 
 func (b *New) CreateNew() *New {

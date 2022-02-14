@@ -11,4 +11,5 @@ var RegisterNewStoreRoutes = func(router *mux.Router) {
 	router.HandleFunc("/get/news/id/{id}", controllers.GetNewById).Methods("GET")
 	router.HandleFunc("/update/news/id/{id}", controllers.UpdateNew).Methods("PUT")
 	router.HandleFunc("/delete/news/id/{id}", controllers.DeleteNew).Methods("DELETE")
+	router.HandleFunc("/login", controllers.GetUser).Methods("POST")
 }
