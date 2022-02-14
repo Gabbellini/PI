@@ -12,9 +12,9 @@ func main() {
 	router := mux.NewRouter()
 	routes.RegisterNewStoreRoutes(router)
 	http.Handle("/", router)
-	credentials := handlers.AllowCredentials()
-	methods := handlers.AllowedMethods([]string{"POST", "GET", "PUT", "OPTIONS"})
-	origins := handlers.AllowedOrigins([]string{"http://127.0.0.1:8080", "http://localhost:8080"})
+	headersOk := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"})
+	originsOk := handlers.AllowedOrigins([]string{"*"})
+	methodsOk := handlers.AllowedMethods([]string{"GET", "HEAD", "POST", "PUT", "OPTIONS"})
 	log.Println("Server is running on port 8000")
-	log.Fatal(http.ListenAndServe("localhost:8000", handlers.CORS(credentials, methods, origins)(router)))
+	log.Fatal(http.ListenAndServe(":8000", handlers.CORS(originsOk, headersOk, methodsOk)(router)))
 }
