@@ -70,16 +70,16 @@ export default defineComponent({
 }
 
 .btn {
-  position: relative !important;
+  position: relative;
 
-  display: flex !important;
-  justify-content: center !important;
+  display: flex;
+  justify-content: center;
 
-  height: 2px !important;
-  width: 30px !important;
-  padding: 0 !important;
+  height: 2px;
+  width: 30px;
+  padding: 0;
 
-  background: #121212 !important;
+  background: #121212;
   transition: 0.2s all ease-in-out;
 
   z-index: 999999;
@@ -98,14 +98,14 @@ export default defineComponent({
 }
 
 .btn::after {
-  content: "" !important;
-  position: absolute !important;
+  content: "";
+  position: absolute;
 
-  width: 100% !important;
-  height: 2px !important;
-  bottom: -0.5rem !important;
+  width: 100%;
+  height: 2px;
+  bottom: -0.5rem;
 
-  background: #121212 !important;
+  background: #121212;
   transition: 0.2s all ease-in-out;
 }
 
