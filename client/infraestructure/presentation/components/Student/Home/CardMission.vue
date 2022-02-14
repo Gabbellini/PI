@@ -42,7 +42,7 @@ export default defineComponent({
 }
 
 .card:hover {
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
 }
 
 .card__title {
@@ -72,7 +72,7 @@ export default defineComponent({
 
 .card__description::before {
   display: block;
-  content: url("../../assets/static/card-icon.png");
+  content: url("../../../../../infraestructure/presentation/assets/static/card-icon.png");
   width: 100px;
   height: 100px;
 }

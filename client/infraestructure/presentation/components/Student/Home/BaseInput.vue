@@ -1,16 +1,18 @@
 <template>
-  <label class="label" :for="id">{{ label }}</label>
-  <input
-    class="input"
-    v-if="type != 'textarea' && type != 'select'"
-    :type="type"
-    :required="required"
-    :id="id"
-    :disabled="disable"
-    :value="modelValue"
-    :name="name"
-    @input="$emit('update:modelValue', $event.target.value)"
-  />
+  <div class="parent-input">
+    <label :for="id" class="label">{{ label }}</label>
+    <input
+      v-if="type != 'textarea' && type != 'select'"
+      :id="id"
+      :disabled="disable"
+      :name="name"
+      :required="required"
+      :type="type"
+      :value="modelValue"
+      class="input"
+      @input="$emit('update:modelValue', $event.target.value)"
+    />
+  </div>
 </template>
 
 <script lang="ts">
@@ -54,6 +56,19 @@ export default defineComponent({
 </script>
 
 <style>
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.parent-input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
 .label {
   font-size: 1rem;
   margin-bottom: 0.5rem;
@@ -64,5 +79,7 @@ export default defineComponent({
   background: var(--background-color);
   border: var(--block-border);
   color: var(--text-color);
+
+  padding: 0.5rem;
 }
 </style>

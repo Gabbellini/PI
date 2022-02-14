@@ -1,20 +1,16 @@
 <template>
   <div class="view">
     <span id="top" />
-    <div class="triger" @click="toggleMenu" v-show="isMenuOpened" />
-    <HEADER />
-    <MENU />
+    <div v-show="isMenuOpened" class="trigger" @click="toggleMenu" />
     <router-view />
   </div>
 </template>
 
 <script lang="ts">
 import store from "../../infraestructure/repository/store";
-import HEADER from "./components/Header.vue";
-import MENU from "./components/Menu.vue";
-import { computed } from "@vue/reactivity";
+import { computed } from "vue";
 export default {
-  components: { HEADER, MENU },
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   setup() {
     async function toggleMenu() {
       await store.dispatch("toggleMenu");
@@ -33,7 +29,8 @@ export default {
 </script>
 
 <style>
-@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+
 :root {
   /* Colors */
   --background-color: #fafafa;
@@ -51,7 +48,6 @@ export default {
   font-display: swap;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
 * {
   font-family: "Quicksand", sans-serif !important;
 }
@@ -60,7 +56,7 @@ export default {
   background: var(--background-color);
 }
 
-.triger {
+.trigger {
   z-index: 5;
   position: fixed;
   top: 60px;

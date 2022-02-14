@@ -12,7 +12,7 @@
         alt="Logo do grêmio estudantil (auto falante)"
         class="logo"
         height="40"
-        src="../assets/static/logo-360px.webp"
+        src="infraestructure/presentation/assets/static/logo-360px.webp"
         width="158"
       />
     </router-link>
@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts">
-import store from "../../../infraestructure/repository/store";
+import store from "../../../../repository/store";
 import { computed, defineComponent } from "vue";
 
 export default defineComponent({

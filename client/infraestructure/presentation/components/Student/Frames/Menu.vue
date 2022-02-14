@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import store from "../../../infraestructure/repository/store";
+import store from "../../../../repository/store";
 import { computed, defineComponent } from "vue";
 
 export default defineComponent({
@@ -70,17 +70,17 @@ export default defineComponent({
 }
 
 .item--goal::before {
-  content: url("../assets/static/goal.png");
+  content: url("../../../../../infraestructure/presentation/assets/static/goal.png");
   position: relative;
 }
 
 .item--newspaper::before {
-  content: url("../assets/static/newspaper.png");
+  content: url("../../../../../infraestructure/presentation/assets/static/newspaper.png");
   position: relative;
 }
 
 .item--contact::before {
-  content: url("../assets/static/contact.png");
+  content: url("../../../../../infraestructure/presentation/assets/static/contact.png");
   position: relative;
 }
 
@@ -98,13 +98,13 @@ export default defineComponent({
   }
 
   to {
-    width: 0px;
+    width: 0;
   }
 }
 
 @keyframes open-menu {
   from {
-    width: 0px;
+    width: 0;
   }
 
   to {

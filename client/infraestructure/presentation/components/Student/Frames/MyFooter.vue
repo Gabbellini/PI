@@ -2,33 +2,33 @@
   <footer class="footer">
     <div class="footer__logo">
       <img
-        class="logo"
-        width="145"
-        height="40"
-        src="../assets/static/logo-white-360px.webp"
         alt="Logo do grêmio estudantil (auto falante)"
+        class="logo"
+        height="40"
+        src="../../../../../infraestructure/presentation/assets/static/logo-white-360px.webp"
+        width="145"
       />
       <div class="social-media">
         <a
-          rel="noopener noreferrer"
-          title="Ir para o instagram do grêmio estudantil"
           class="link link--instagram"
           href="https://www.instagram.com/ifsc.gaspar/"
+          rel="noopener noreferrer"
           target="_blank"
+          title="Ir para o instagram do grêmio estudantil"
         />
         <a
-          rel="noopener noreferrer"
-          title="Ir para o facebook do grêmio estudantil"
           class="link link--facebook"
           href="https://pt-br.facebook.com/ifsc.gaspar/"
+          rel="noopener noreferrer"
           target="_blank"
+          title="Ir para o facebook do grêmio estudantil"
         />
         <a
-          rel="noopener noreferrer"
-          title="Ir para o youtube do grêmio estudantil"
           class="link link--youtube"
           href="https://www.youtube.com/c/ifscgaspar1"
+          rel="noopener noreferrer"
           target="_blank"
+          title="Ir para o youtube do grêmio estudantil"
         />
       </div>
     </div>
@@ -72,13 +72,13 @@ export default defineComponent({});
 }
 
 .link--instagram {
-  background-image: url("../assets/static/instagram-white.webp");
+  background-image: url("../../../../../infraestructure/presentation/assets/static/instagram-white.webp");
 }
 .link--facebook {
-  background-image: url("../assets/static/facebook-white.webp");
+  background-image: url("../../../../../infraestructure/presentation/assets/static/facebook-white.webp");
 }
 .link--youtube {
-  background-image: url("../assets/static/youtube-white.webp");
+  background-image: url("../../../../../infraestructure/presentation/assets/static/youtube-white.webp");
 }
 
 .copyright {
@@ -101,7 +101,7 @@ export default defineComponent({});
 
 @media screen and (min-width: 1024px) {
   .logo {
-    content: url("../assets/static/logo-white-1024px.webp");
+    content: url("../../../../../infraestructure/presentation/assets/static/logo-white-1024px.webp");
     width: 250px;
     height: auto;
   }
@@ -111,13 +111,13 @@ export default defineComponent({});
   }
 
   .link--instagram {
-    background-image: url("../assets/static/instagram-white-1024px.webp") !important;
+    background-image: url("../../../../../infraestructure/presentation/assets/static/instagram-white-1024px.webp") !important;
   }
   .link--facebook {
-    background-image: url("../assets/static/facebook-white-1024px.webp") !important;
+    background-image: url("../../../../../infraestructure/presentation/assets/static/facebook-white-1024px.webp") !important;
   }
   .link--youtube {
-    background-image: url("../assets/static/youtube-white-1024px.webp") !important;
+    background-image: url("../../../../../infraestructure/presentation/assets/static/youtube-white-1024px.webp") !important;
   }
 }
 </style>

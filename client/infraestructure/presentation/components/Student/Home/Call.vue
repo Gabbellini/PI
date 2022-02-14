@@ -17,8 +17,8 @@
   justify-content: center;
   width: 100%;
   height: 70vw;
-  background: url("../../assets/static/call-background-360px.webp") #000
-    no-repeat;
+  background: url("../../../../../infraestructure/presentation/assets/static/call-background-360px.webp")
+    #000 no-repeat;
   background-size: cover !important;
   background-position: center !important;
   padding: 0 1rem;
@@ -55,8 +55,8 @@
 
 @media screen and (min-width: 500px) {
   .call {
-    background: url("../../assets/static/call-backgrond-768px.webp") #000
-      no-repeat;
+    background: url("../../../../../infraestructure/presentation/assets/static/call-backgrond-768px.webp")
+      #000 no-repeat;
   }
 
   .call__text__title {

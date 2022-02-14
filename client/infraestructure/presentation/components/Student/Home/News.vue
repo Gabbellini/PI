@@ -29,10 +29,10 @@
 import { onBeforeMount, ref, watch } from "vue";
 import "vue3-carousel/dist/carousel.css";
 
-import Card from "../Card.vue";
-import { newsUseCases } from "../../../../domain/usecases/news_use_cases";
-import Modal from "../Modal";
-import { News } from "../../../../domain/entitites/news";
+import Card from "./Card.vue";
+import { newsUseCases } from "../../../../../domain/usecases/news_use_cases";
+import Modal from "./Modal.vue";
+import { News } from "../../../../../domain/entitites/news";
 
 export default {
   components: { Modal, Card },

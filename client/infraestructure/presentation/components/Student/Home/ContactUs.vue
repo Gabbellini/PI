@@ -7,25 +7,25 @@
     </h3>
     <div class="social-media">
       <a
-        rel="noopener noreferrer"
-        title="ir para o instagram do grêmio estudantil"
         class="link link--instagram"
         href="https://www.instagram.com/ifsc.gaspar/"
+        rel="noopener noreferrer"
         target="_blank"
+        title="ir para o instagram do grêmio estudantil"
       />
       <a
-        rel="noopener noreferrer"
-        title="ir para o facebook do grêmio estudantil"
         class="link link--facebook"
         href="https://pt-br.facebook.com/ifsc.gaspar/"
+        rel="noopener noreferrer"
         target="_blank"
+        title="ir para o facebook do grêmio estudantil"
       />
       <a
-        rel="noopener noreferrer"
-        title="ir para o youtube do grêmio estudantil"
         class="link link--youtube"
         href="https://www.youtube.com/c/ifscgaspar1"
+        rel="noopener noreferrer"
         target="_blank"
+        title="ir para o youtube do grêmio estudantil"
       />
     </div>
 
@@ -47,9 +47,8 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 0 1rem;
   background: rgba(0, 0, 0, 0.03);
-  padding-top: 2rem;
+  padding: 2rem 1rem 0;
 }
 
 .title {
@@ -83,13 +82,13 @@ export default defineComponent({
 }
 
 .link--instagram {
-  background-image: url("../../assets/static/instagram.webp");
+  background-image: url("../../../../../infraestructure/presentation/assets/static/instagram.webp");
 }
 .link--facebook {
-  background-image: url("../../assets/static/facebook.webp");
+  background-image: url("../../../../../infraestructure/presentation/assets/static/facebook.webp");
 }
 .link--youtube {
-  background-image: url("../../assets/static/youtube.webp");
+  background-image: url("../../../../../infraestructure/presentation/assets/static/youtube.webp");
 }
 
 @media screen and (min-width: 600px) {
@@ -120,13 +119,13 @@ export default defineComponent({
   }
 
   .link--instagram {
-    background-image: url("../../assets/static/instagram-768px.webp");
+    background-image: url("../../../../../infraestructure/presentation/assets/static/instagram-768px.webp");
   }
   .link--facebook {
-    background-image: url("../../assets/static/facebook-768px.webp");
+    background-image: url("../../../../../infraestructure/presentation/assets/static/facebook-768px.webp");
   }
   .link--youtube {
-    background-image: url("../../assets/static/youtube-768px.webp");
+    background-image: url("../../../../../infraestructure/presentation/assets/static/youtube-768px.webp");
   }
 }
 </style>
