@@ -20,43 +20,53 @@ const routes: Array<RouteRecordRaw> = [
           ),
       },
       {
-        path: "news",
+        path: "",
+        name: "frame",
         component: () =>
-          import("../../infraestructure/presentation/views/RouterView.vue"),
-        async beforeEnter(to, from, next) {
-          const userIsLogged = JSON.parse(
-            localStorage.getItem("userIsLogged") || "false"
-          );
-
-          if (!userIsLogged) {
-            await router.push({ name: "admin" });
-          }
-          next();
-        },
+          import(
+            "../../infraestructure/presentation/views/Administrative/Frame.vue"
+          ),
         children: [
           {
-            path: "",
-            name: "news",
+            path: "news",
             component: () =>
-              import(
-                "../../infraestructure/presentation/views/Administrative/News.vue"
-              ),
-          },
-          {
-            path: "edit/:id",
-            name: "edit_news",
-            component: () =>
-              import(
-                "../../infraestructure/presentation/views/Administrative/NewsManager.vue"
-              ),
-          },
-          {
-            path: "register",
-            name: "register_news",
-            component: () =>
-              import(
-                "../../infraestructure/presentation/views/Administrative/NewsManager.vue"
-              ),
+              import("../../infraestructure/presentation/views/RouterView.vue"),
+            async beforeEnter(to, from, next) {
+              const userIsLogged = JSON.parse(
+                localStorage.getItem("userIsLogged") || "false"
+              );
+
+              if (!userIsLogged) {
+                await router.push({ name: "admin" });
+              }
+              next();
+            },
+            children: [
+              {
+                path: "",
+                name: "news",
+                component: () =>
+                  import(
+                    "../../infraestructure/presentation/views/Administrative/News.vue"
+                  ),
+              },
+              {
+                path: "edit/:id",
+                name: "edit_news",
+                component: () =>
+                  import(
+                    "../../infraestructure/presentation/views/Administrative/NewsManager.vue"
+                  ),
+              },
+              {
+                path: "register",
+                name: "register_news",
+                component: () =>
+                  import(
+                    "../../infraestructure/presentation/views/Administrative/NewsManager.vue"
+                  ),
+              },
+            ],
           },
         ],
       },

@@ -30,27 +30,11 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
-
 :root {
   /* Colors */
   --background-color: #fafafa;
   --text-color: #121212;
   --block-border: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-@font-face {
-  font-family: "Pacifico";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Pacifico Regular"), local("Pacifico-Regular"),
-    url(https://fonts.gstatic.com/s/pacifico/v12/FwZY7-Qmy14u9lezJ-6H6MmBp0u-.woff2)
-      format("woff2");
-  font-display: swap;
-}
-
-* {
-  font-family: "Quicksand", sans-serif !important;
 }
 
 .view {

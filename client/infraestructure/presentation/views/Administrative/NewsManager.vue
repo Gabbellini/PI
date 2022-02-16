@@ -108,8 +108,6 @@ export default {
 .content {
   display: grid;
   place-items: center;
-  width: 100vw;
-  height: 100vh;
 }
 
 .form {
