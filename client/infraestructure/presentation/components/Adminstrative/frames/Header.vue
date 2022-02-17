@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <h2 class="header__title">Noticias</h2>
-    <div class="header__profile">Olá {{ name || "Bellini" }}</div>
+    <div class="header__profile">Olá, {{ name || "Bellini" }} &#9662;</div>
   </header>
 </template>
 
@@ -32,10 +32,5 @@ export default {
   cursor: pointer;
   font-weight: bold;
   opacity: 0.75;
-}
-
-.header__profile::after {
-  content: ">";
-  transform: rotate(90deg);
 }
 </style>

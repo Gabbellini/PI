@@ -58,6 +58,7 @@ export default {
 
 .main {
   background: #f9fbfc;
+  overflow-y: auto;
 }
 
 .frame__left {

@@ -4,7 +4,11 @@
       <li
         v-for="(item, index) of items"
         :key="index"
-        :class="['item', `item--${item.icon}`]"
+        :class="[
+          'item',
+          `item--${item.icon}`,
+          { selected: item.route.name === $route.name },
+        ]"
       >
         <router-link :to="item.route" class="item__link">{{
           item.title
@@ -34,8 +38,8 @@ export default {
   setup() {
     const items: Array<Item> = [
       new Item("Notícias", { name: "news" }, "news"),
-      new Item("Usuários", { name: "news" }, "news"),
-      new Item("Shop", { name: "news" }, "news"),
+      new Item("Usuários", { name: "" }, "news"),
+      new Item("Shop", { name: "" }, "news"),
     ];
     return {
       items,
@@ -59,7 +63,15 @@ export default {
 .item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
+}
+
+.item.selected > .item__link {
+  color: #2491e4;
+}
+
+.item.selected::before {
+  filter: sepia(1) hue-rotate(175deg) brightness(55%) saturate(1000%);
 }
 
 .item--news::before {
