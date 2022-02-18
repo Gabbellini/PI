@@ -10,7 +10,6 @@
             :key="index"
           >
             <button @click.stop="$emit('action', item.action)" class="menu__button" >{{ item.title }}</button>
-            <hr class="menu__line" v-if="items.length - 1 >= index + 1">
           </li>
         </ul>
       </div>
@@ -122,7 +121,7 @@ export default {
 
 .menu {
   position: absolute;
-  top: 50%;
+  top: 200%;
   left: 50%;
   width: 100px;
   height: fit-content;
@@ -136,8 +135,8 @@ export default {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.menu__item:last-of-type {
-  border-bottom: none;
+.menu__item:not(.menu__item:last-of-type) {
+  border-bottom: 1px solid #b7cad957;
 }
 
 
@@ -152,22 +151,24 @@ export default {
   font-size: 0.65rem;
 
   border: none;
-  background: transparent;
-  color: #121212;
+  background: #fff;
+  color: #677783;
 
   cursor: pointer;
   z-index: 9;
 
+  transition: 0.1s all ease-in-out;
+
 }
 
 .menu__button:hover {
-  background: rgba(0, 0, 0, 0.02);
+  background: #2491e4;
+  color: #fff;
 }
 
 .menu__line {
-  height: 1px;
+  height: calc(1rem / 60);
 
-  background: rgba(0, 0, 0, 0.05);
 
   margin: 0;
   border: none;

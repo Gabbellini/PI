@@ -38,8 +38,6 @@ export default {
   setup() {
     const items: Array<Item> = [
       new Item("Notícias", { name: "news" }, "news"),
-      new Item("Usuários", { name: "" }, "news"),
-      new Item("Shop", { name: "" }, "news"),
     ];
     return {
       items,
