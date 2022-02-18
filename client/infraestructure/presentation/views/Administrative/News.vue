@@ -9,14 +9,15 @@
       </div>
       <ol class="list">
         <li v-for="(news, index) of arrayOfNews" :key="index">
-          <router-link :to="{ name: 'edit_news', params: { id: news.ID } }">
             <item-block
               :date="news.UpdatedAt"
               :description="news.description"
               :is-active="!news.DeletedAt"
               :title="news.title"
-            ></item-block>
-          </router-link>
+              @click="goToEdition(news)"
+              @edit="goToEdition(news)"
+              @remove="removeNews(news)"
+            />
         </li>
       </ol>
     </div>
@@ -28,6 +29,8 @@ import ItemBlock from "../../components/Adminstrative/table/itemBlock.vue";
 import { onBeforeMount, ref } from "vue";
 import { newsUseCases } from "../../../../domain/usecases/news_use_cases";
 import MainButton from "../../components/Adminstrative/MainButton.vue";
+import router from '@/router';
+import { News } from 'domain/entitites/news';
 
 export default {
   components: { MainButton, ItemBlock },
@@ -44,12 +47,27 @@ export default {
       try {
         arrayOfNews.value = await newsUseCases.list();
       } catch (e) {
-        alert(e.message);
+        console.log(e);
       }
     };
 
+    const goToEdition = async (news: News) => {
+      await router.push({name: "edit_news", params: {id: news.ID}})
+    }
+
+    const removeNews = async (news: News) => {
+      try {
+        await newsUseCases.delete(news.ID);
+        arrayOfNews.value = await newsUseCases.list();
+      } catch (e) {
+        console.log(e);
+      }
+    }
+
     return {
       arrayOfNews,
+      goToEdition,
+      removeNews,
     };
   },
 };

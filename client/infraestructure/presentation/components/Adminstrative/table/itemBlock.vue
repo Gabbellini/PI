@@ -1,5 +1,6 @@
 <template>
   <div :class="['block', { active: isActive }]">
+    <action-menu :items="actions" class="block__menu" @action="$emit($event)"/>
     <div class="block__header">
       <h3 class="block__title">{{ title }}</h3>
       <div class="block__status">
@@ -16,7 +17,9 @@
 </template>
 
 <script lang="ts">
+import actionMenu from './actionMenu.vue';
 export default {
+  components: { actionMenu },
   name: "itemBlock",
 
   props: {
@@ -49,7 +52,13 @@ export default {
       return date.split("T", 1)[0];
     };
 
+    const actions = [
+      {title: 'Editar', action: 'edit'},
+      {title: 'Remover', action: 'remove'},
+    ];
+
     return {
+      actions,
       formattedDate,
     };
   },
@@ -58,10 +67,11 @@ export default {
 
 <style scoped>
 .block {
+  position: relative;
+
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  position: relative;
 
   width: 100%;
   height: 180px;
@@ -83,6 +93,12 @@ export default {
   box-shadow: 0 8px 15px rgba(36, 145, 228, 0.1);
 }
 
+.block__menu {
+  position: absolute;
+  top: 1.2rem;
+  right: 0.8rem;
+}
+
 .block__header {
   display: flex;
   justify-content: space-between;
@@ -97,6 +113,10 @@ export default {
   font-size: 1.2rem;
   line-height: 1.3rem;
   color: #677783;
+}
+
+.block.active .block__status {
+  color: #73bc3a;
 }
 
 .block__title::before {
@@ -137,8 +157,8 @@ export default {
 .block.active .block__status__radio::after {
   content: "";
   display: block;
-  width: 7px;
-  height: 7px;
+  width: 70%;
+  height: 70%;
   border-radius: 50%;
 
   background: #73bc3a;
