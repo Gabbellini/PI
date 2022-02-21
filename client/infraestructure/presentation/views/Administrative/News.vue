@@ -1,9 +1,6 @@
 <template>
   <div class="container">
-    <div class="sub-header">
-      <h3 class="sub-header__title">Notícias</h3>
-      <main-button @click="goToRegiter" image="+" title="Cadastrar notícia" />
-    </div>
+    
     <ol class="list">
       <li v-for="(news, index) of arrayOfNews" :key="index">
         <item-block
@@ -21,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import ItemBlock from "../../components/Adminstrative/table/itemBlock.vue";
+import ItemBlock from "../../components/Adminstrative/table/ItemBlock.vue";
 import { onBeforeMount, ref } from "vue";
 import { newsUseCases } from "../../../../domain/usecases/news_use_cases";
 import MainButton from "../../components/Adminstrative/MainButton.vue";
