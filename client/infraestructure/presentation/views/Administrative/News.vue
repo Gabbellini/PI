@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    
     <ol class="list">
       <li v-for="(news, index) of arrayOfNews" :key="index">
         <item-block
@@ -18,15 +17,14 @@
 </template>
 
 <script lang="ts">
-import ItemBlock from "../../components/Adminstrative/table/ItemBlock.vue";
 import { onBeforeMount, ref } from "vue";
 import { newsUseCases } from "../../../../domain/usecases/news_use_cases";
-import MainButton from "../../components/Adminstrative/MainButton.vue";
 import router from "@/router";
 import { News } from "domain/entitites/news";
+import ItemBlock from "../../components/Adminstrative/table/ItemBlock.vue";
 
 export default {
-  components: { MainButton, ItemBlock },
+  components: { ItemBlock },
 
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   setup() {

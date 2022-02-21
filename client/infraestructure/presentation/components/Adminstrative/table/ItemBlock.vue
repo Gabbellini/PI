@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import actionMenu from "./actionMenu.vue";
+import actionMenu from "./ActionMenu.vue";
 export default {
   components: { actionMenu },
   name: "itemBlock",
@@ -82,7 +82,8 @@ export default {
   transition: 0.2s all ease;
 }
 
-.block:hover, .block:focus {
+.block:hover,
+.block:focus {
   border: 2px solid #b7cad9;
   box-shadow: 0 8px 15px rgba(36, 145, 228, 0.1);
   outline: none;
@@ -204,7 +205,7 @@ export default {
   }
 
   .block__status {
-    font-size: 0.70rem;
+    font-size: 0.7rem;
   }
 
   .block__description {
@@ -218,7 +219,6 @@ export default {
 }
 
 @media screen and (max-width: 620px) {
-
   .block {
     gap: 0.5rem;
     height: fit-content;
