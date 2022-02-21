@@ -1,46 +1,83 @@
 <template>
-  <div>
-    <button class="btn" @click.stop @mouseenter="toggleModal" @mouseleave="toggleModal">
-      <div class="btn__point" />
-      <div class="menu" v-if="isModalOpened" @mouseenter.stop>
-        <ul class="menu__list">
-          <li
-            class="menu__item"
-            v-for="(item, index) of items"
-            :key="index"
+  <button
+    class="btn"
+    @click.stop="toggleModal"
+    @focus="toggleModal"
+    @touch="toggleModal"
+    @mouseenter="toggleModal"
+    @mouseleave="toggleModal"
+  >
+    <div class="btn__point" />
+    <div class="menu" v-if="isModalOpened" @mouseenter.stop>
+      <ul class="menu__list">
+        <li class="menu__item">
+          <button
+            @click.stop="$emit('action', 'edit')"
+            class="menu__button"
           >
-            <button @click.stop="$emit('action', item.action)" class="menu__button" >{{ item.title }}</button>
-          </li>
-        </ul>
-      </div>
-    </button>
-  </div>
+            Editar
+          </button>
+        </li>
+        <li class="menu__item">
+          <button
+            @click.stop="$emit('action', 'remove')"
+            class="menu__button"
+            @blur="toggleModal"
+          >
+            Remover
+          </button>
+        </li>
+      </ul>
+    </div>
+  </button>
 </template>
 
 <script lang="ts">
-import { ref } from 'vue';
+import { ref } from "vue";
 export default {
   name: "actionMenu",
-  props: {
-    items: {
-      required: true,
-      type: Array,
-    },
-  },
 
   setup() {
     const isModalOpened = ref(false);
 
-    const toggleModal = (e: Event) => {
-      e.stopImmediatePropagation();
+    const handleClickEvents = () => {
       isModalOpened.value = !isModalOpened.value;
-    }
+    };
+
+    const handleFocusEvents = () => {
+      isModalOpened.value = !isModalOpened.value;
+    };
+
+    const handleMouseEvents = () => {
+      isModalOpened.value = !isModalOpened.value;
+    };
+
+    const toggleModal = (e: Event | MouseEvent) => {
+      e.stopImmediatePropagation();
+
+      console.log(e.type);
+
+      switch (e.type) {
+        case "click":
+        case "touch":
+          handleClickEvents();
+          break;
+        case "focus":
+        case "blur":
+          handleFocusEvents();
+          break;
+        case "mouseenter":
+        case "mouseleave":
+          handleMouseEvents();
+          break;
+      }
+    };
 
     return {
       isModalOpened,
       toggleModal,
-    }
-  }
+    };
+  },
 };
 </script>
 
@@ -90,8 +127,12 @@ export default {
   transition: 0.2s all ease-in-out;
 }
 
-.btn:hover .btn__point {
+.btn:hover .btn__point, .btn:focus .btn__point {
   background: #b7cad9;
+}
+
+.btn:focus {
+  outline: none;
 }
 
 .btn__point::before,
@@ -121,12 +162,10 @@ export default {
 
 .menu {
   position: absolute;
-  top: 200%;
-  left: 50%;
+  top: 0;
+  left: 80%;
   width: 100px;
   height: fit-content;
-
-  transform: translate(10%, -100%);
 
   border-radius: 2px;
   background: #fff;
@@ -139,11 +178,9 @@ export default {
   border-bottom: 1px solid #b7cad957;
 }
 
-
 .menu__button {
   width: 100%;
   height: 25px;
-
 
   text-align: left;
   text-transform: uppercase;
@@ -155,23 +192,28 @@ export default {
   color: #677783;
 
   cursor: pointer;
-  z-index: 9;
+  z-index: 999;
 
   transition: 0.1s all ease-in-out;
-
 }
 
-.menu__button:hover {
+.menu__button:hover, .menu__button:focus {
   background: #2491e4;
   color: #fff;
+  outline: none;
 }
 
 .menu__line {
   height: calc(1rem / 60);
 
-
   margin: 0;
   border: none;
 }
 
+@media screen and (max-width: 900px) {
+  .menu {
+    left: -280%;
+    top: 120%;
+  }
+}
 </style>

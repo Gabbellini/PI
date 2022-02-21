@@ -10,7 +10,7 @@
           { selected: item.route.name === $route.name },
         ]"
       >
-        <router-link :to="item.route" class="item__link">{{
+        <router-link @click="closeMenu" :to="item.route" class="item__link">{{
           item.title
         }}</router-link>
       </li>
@@ -19,6 +19,7 @@
 </template>
 
 <script lang="ts">
+import store from '../../../../../infraestructure/repository/store';
 class Item {
   public title;
   public route;
@@ -39,8 +40,14 @@ export default {
     const items: Array<Item> = [
       new Item("Notícias", { name: "news" }, "news"),
     ];
+
+    const closeMenu = async () => {
+      await store.dispatch("menu_state/setMenuState", false);
+    };
+
     return {
       items,
+      closeMenu,
     };
   },
 };

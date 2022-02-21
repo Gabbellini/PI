@@ -1,26 +1,22 @@
 <template>
-  <div class="news">
-    <div class="container">
-      <div class="sub-header">
-        <h3 class="sub-header__title">Notícias</h3>
-        <router-link :to="{ name: 'register_news' }">
-          <main-button image="+">Cadastrar notícia</main-button>
-        </router-link>
-      </div>
-      <ol class="list">
-        <li v-for="(news, index) of arrayOfNews" :key="index">
-            <item-block
-              :date="news.UpdatedAt"
-              :description="news.description"
-              :is-active="!news.DeletedAt"
-              :title="news.title"
-              @click="goToEdition(news)"
-              @edit="goToEdition(news)"
-              @remove="removeNews(news)"
-            />
-        </li>
-      </ol>
+  <div class="container">
+    <div class="sub-header">
+      <h3 class="sub-header__title">Notícias</h3>
+      <main-button @click="goToRegiter" image="+" title="Cadastrar notícia" />
     </div>
+    <ol class="list">
+      <li v-for="(news, index) of arrayOfNews" :key="index">
+        <item-block
+          :date="news.UpdatedAt"
+          :description="news.description"
+          :is-active="!news.DeletedAt"
+          :title="news.title"
+          @click="goToEdition(news)"
+          @edit="goToEdition(news)"
+          @remove="removeNews(news)"
+        />
+      </li>
+    </ol>
   </div>
 </template>
 
@@ -29,8 +25,8 @@ import ItemBlock from "../../components/Adminstrative/table/itemBlock.vue";
 import { onBeforeMount, ref } from "vue";
 import { newsUseCases } from "../../../../domain/usecases/news_use_cases";
 import MainButton from "../../components/Adminstrative/MainButton.vue";
-import router from '@/router';
-import { News } from 'domain/entitites/news';
+import router from "@/router";
+import { News } from "domain/entitites/news";
 
 export default {
   components: { MainButton, ItemBlock },
@@ -52,8 +48,12 @@ export default {
     };
 
     const goToEdition = async (news: News) => {
-      await router.push({name: "edit_news", params: {id: news.ID}})
-    }
+      await router.push({ name: "edit_news", params: { id: news.ID } });
+    };
+
+    const goToRegiter = async () => {
+      await router.push({ name: "register_news" });
+    };
 
     const removeNews = async (news: News) => {
       try {
@@ -62,10 +62,11 @@ export default {
       } catch (e) {
         console.log(e);
       }
-    }
+    };
 
     return {
       arrayOfNews,
+      goToRegiter,
       goToEdition,
       removeNews,
     };
@@ -74,35 +75,29 @@ export default {
 </script>
 
 <style scoped>
-.news {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .container {
   display: flex;
   flex-direction: column;
-  max-width: 1000px;
+  width: 100%;
   gap: 2rem;
 }
 
 .list {
   width: 100%;
-
   display: flex;
   flex-direction: column;
-
   gap: 1rem;
 }
 
 .sub-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .sub-header__title {
   font-size: 1.3rem;
+  height: fit-content;
   color: #677783;
 }
 

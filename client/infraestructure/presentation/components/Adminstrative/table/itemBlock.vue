@@ -1,6 +1,6 @@
 <template>
-  <div :class="['block', { active: isActive }]">
-    <action-menu :items="actions" class="block__menu" @action="$emit($event)"/>
+  <div :class="['block', { active: isActive }]" tabindex="0">
+    <action-menu class="block__menu" @action="$emit($event)" />
     <div class="block__header">
       <h3 class="block__title">{{ title }}</h3>
       <div class="block__status">
@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import actionMenu from './actionMenu.vue';
+import actionMenu from "./actionMenu.vue";
 export default {
   components: { actionMenu },
   name: "itemBlock",
@@ -52,13 +52,7 @@ export default {
       return date.split("T", 1)[0];
     };
 
-    const actions = [
-      {title: 'Editar', action: 'edit'},
-      {title: 'Remover', action: 'remove'},
-    ];
-
     return {
-      actions,
       formattedDate,
     };
   },
@@ -88,9 +82,10 @@ export default {
   transition: 0.2s all ease;
 }
 
-.block:hover {
+.block:hover, .block:focus {
   border: 2px solid #b7cad9;
   box-shadow: 0 8px 15px rgba(36, 145, 228, 0.1);
+  outline: none;
 }
 
 .block__menu {
@@ -102,6 +97,7 @@ export default {
 .block__header {
   display: flex;
   justify-content: space-between;
+  gap: 1rem;
 }
 
 .block__title {
@@ -200,5 +196,41 @@ export default {
 .block__date {
   font-size: 0.8rem;
   color: #677783;
+}
+
+@media screen and (max-width: 768px) {
+  .block__title {
+    font-size: 0.875rem;
+  }
+
+  .block__status {
+    font-size: 0.70rem;
+  }
+
+  .block__description {
+    font-size: 0.75rem;
+    max-width: 70%;
+  }
+
+  .block__date {
+    font-size: 0.75rem;
+  }
+}
+
+@media screen and (max-width: 620px) {
+
+  .block {
+    gap: 0.5rem;
+    height: fit-content;
+    padding: 1.5rem 3rem 1.5rem 3rem;
+  }
+
+  .block__title::before {
+    left: 0.8rem;
+  }
+
+  .block__description {
+    max-width: none;
+  }
 }
 </style>
