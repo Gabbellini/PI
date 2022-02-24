@@ -1,6 +1,6 @@
 <template>
-  <button class="btn" @click="$emit('click')">
-    <span class="btn__icon">{{ image }}</span>
+  <button :form="form" :type="type" class="btn" @click="$emit('click')">
+    <span v-if="image" class="btn__icon">{{ image }}</span>
     <span :class="['btn__title']"> {{ title }}</span>
   </button>
 </template>
@@ -15,6 +15,16 @@ export default {
     },
     image: {
       required: true,
+    },
+    type: {
+      required: false,
+      type: String,
+      // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+      default: () => "button",
+    },
+    form: {
+      required: false,
+      type: [String, Number],
     },
   },
 };

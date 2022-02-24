@@ -1,75 +1,64 @@
 <template>
   <div class="content">
-    <form class="form" @submit.prevent="submit">
-      <h2 class="form__title">
-        {{
-          $route.name === "edit_news" ? "Editar Noticia" : "Cadastrar noticias"
-        }}
-      </h2>
-      <div class="form__content">
-        <base-input
-          id="title"
-          v-model:model-value="news.title"
-          label="Título"
-          name="title"
-          required
-          type="text"
-        />
-        <base-input
-          id="description"
-          v-model:model-value="news.description"
-          label="Descrição"
-          name="description"
-          required
-          type="text-area"
-        />
-        <base-input
-          id="url"
-          v-model:model-value="news.image"
-          label="URL da imagem"
-          name="url"
-          required
-          type="url"
-        />
-      </div>
-      <input
-        :value="$route.name === 'edit_news' ? 'Finalizar edição' : 'Cadastrar'"
-        class="form__button"
-        type="submit"
-      />
-    </form>
+    <sub-header
+      :button-form="actionName"
+      :button-title="actionName"
+      :title="`${actionName} notícia`"
+      button-type="submit"
+    />
+    <news-form
+      v-if="news.ID || actionName === 'Cadastrar'"
+      :id="actionName"
+      v-model:news="news"
+      :news="news"
+      @submit="submit"
+    />
   </div>
 </template>
 
 <script>
-import BaseInput from "../../components/Student/Home/BaseInput";
 import { onBeforeMount, ref } from "vue";
 import { newsUseCases } from "../../../../domain/usecases/news_use_cases";
 import router from "@/router";
 import { News } from "../../../../domain/entitites/news";
+import SubHeader from "../../components/Adminstrative/table/SubHeader";
+import NewsForm from "../../components/Adminstrative/forms/NewsForm";
 export default {
   name: "NewsManager",
-  components: { BaseInput },
+  components: { NewsForm, SubHeader },
 
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   setup() {
     const news = ref(new News());
+    const actionName = ref("");
+    let route;
+    const ViewConfigByRouteName = {
+      edit_news: { title: "Editar", method: "edit" },
+      register_news: { title: "Cadastrar", method: "register" },
+    };
 
     onBeforeMount(async () => {
-      news.value = await loadNews();
+      await loadNews();
+      await loadRouteConfigs();
     });
 
     const loadNews = async () => {
       try {
         const id = Number(router.currentRoute.value.params.id);
-        return await newsUseCases.get(id);
+        news.value = await newsUseCases.get(id);
       } catch (e) {
         console.log(e);
       }
     };
 
+    const loadRouteConfigs = () => {
+      route = router.currentRoute.value;
+      actionName.value = ViewConfigByRouteName[route.name].title;
+    };
+
     const submit = async () => {
-      if (router.currentRoute.value.name === "edit_news") {
+      const action = ViewConfigByRouteName[route.name].method;
+      if (action === "edit") {
         await edit();
       } else {
         await register();
@@ -98,6 +87,7 @@ export default {
 
     return {
       news,
+      actionName,
       submit,
     };
   },
@@ -108,53 +98,7 @@ export default {
 .content {
   display: grid;
   place-items: center;
-}
-
-.form {
-  width: 90%;
-  height: fit-content;
-  max-width: 500px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-
-  padding: 1rem;
-  box-sizing: border-box;
-
-  border: 1px solid rgba(0 0 0 / 20%);
-}
-
-.form__title {
-  font-size: 1.4rem;
-  font-weight: bold;
-
-  color: #4e4e4e;
-}
-
-.form__content {
-  display: grid;
+  width: 100%;
   grid-gap: 2rem;
-}
-
-.form__button {
-  width: fit-content;
-  height: 40px;
-  cursor: pointer;
-
-  text-transform: uppercase;
-  letter-spacing: 1px;
-
-  border: none;
-
-  background: #4e4e4e;
-  color: #fff;
-
-  opacity: 0.85;
-  transition: 0.2s all;
-}
-
-.form__button:hover {
-  opacity: 1;
 }
 </style>

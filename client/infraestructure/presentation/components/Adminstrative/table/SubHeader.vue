@@ -2,8 +2,10 @@
   <div class="sub-header">
     <h2 class="sub-header__title">{{ title }}</h2>
     <main-button
+      :form="buttonForm"
       :image="buttonIcon"
       :title="buttonTitle"
+      :type="buttonType"
       @click="$emit('mainActionWereCalled')"
     />
   </div>
@@ -24,8 +26,16 @@ export default {
       type: String,
     },
     buttonIcon: {
-      required: true,
+      required: false,
       type: String,
+    },
+    buttonType: {
+      required: false,
+      type: String,
+    },
+    buttonForm: {
+      required: false,
+      type: [String, Number],
     },
   },
 };
@@ -33,6 +43,7 @@ export default {
 
 <style scoped>
 .sub-header {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
