@@ -1,4 +1,5 @@
 <template>
+  {{ isMenuOpened }}
   <div class="menu">
     <nav :class="['nav', isMenuOpened ? 'open' : 'close']">
       <ul class="list">
@@ -19,12 +20,12 @@ import { computed, defineComponent } from "vue";
 
 export default defineComponent({
   setup() {
-    function toggleMenu() {
-      store.dispatch("toggleMenu");
-    }
+    const toggleMenu = async () => {
+      await store.dispatch("menu_state/setMenuState", !isMenuOpened.value);
+    };
 
     const isMenuOpened = computed(() => {
-      return store.getters.isMenuOpened;
+      return store.getters["menu_state/isOpen"];
     });
 
     const logout = () => {

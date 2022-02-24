@@ -20,13 +20,16 @@ const mutations = {
 };
 
 const actions = {
-  toggle({ commit }: ActionContext<MenuStates, MenuStates>) {
+  toggle({ commit }: ActionContext<MenuStates, MenuStates>): void {
     commit("TOGGLE");
   },
-  setMenuState({ commit }: ActionContext<MenuStates, MenuStates>, isOpen: boolean) {
+  setMenuState(
+    { commit }: ActionContext<MenuStates, MenuStates>,
+    isOpen: boolean
+  ): void {
     commit("SET_MENU_STATE", isOpen);
   },
-  toggleAnimation({ commit }: ActionContext<MenuStates, MenuStates>) {
+  toggleAnimation({ commit }: ActionContext<MenuStates, MenuStates>): void {
     commit("TOGGLE_ANIMATION");
   },
 };

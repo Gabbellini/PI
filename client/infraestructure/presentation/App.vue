@@ -14,11 +14,11 @@ export default {
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   setup() {
     async function toggleMenu() {
-      await store.dispatch("toggleMenu");
+      await store.dispatch("menu_state/setMenuState", !isMenuOpened.value);
     }
 
     const isMenuOpened = computed(() => {
-      return store.getters.isMenuOpened;
+      return store.getters["menu_state/isOpen"];
     });
 
     return {

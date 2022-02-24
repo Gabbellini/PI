@@ -28,11 +28,11 @@ export default defineComponent({
 
   setup() {
     function toggleMenu() {
-      store.dispatch("toggleMenu");
+      store.dispatch("menu_state/setMenuState", !isMenuOpened.value);
     }
 
     const isMenuOpened = computed(() => {
-      return store.getters.isMenuOpened;
+      return store.getters["menu_state/isOpen"];
     });
 
     return { isMenuOpened, toggleMenu };
