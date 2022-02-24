@@ -1,5 +1,12 @@
 <template>
   <div class="container">
+    <sub-header
+      button-icon="+"
+      button-title="Cadastrar"
+      button-type="add"
+      title="Noticias"
+      @mainActionWereCalled="goToRegister()"
+    />
     <ol class="list">
       <li v-for="(news, index) of arrayOfNews" :key="index">
         <item-block
@@ -22,9 +29,10 @@ import { newsUseCases } from "../../../../domain/usecases/news_use_cases";
 import router from "@/router";
 import { News } from "domain/entitites/news";
 import ItemBlock from "../../components/Adminstrative/table/ItemBlock.vue";
+import SubHeader from "../../components/Adminstrative/table/SubHeader.vue";
 
 export default {
-  components: { ItemBlock },
+  components: { SubHeader, ItemBlock },
 
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   setup() {
@@ -46,7 +54,7 @@ export default {
       await router.push({ name: "edit_news", params: { id: news.ID } });
     };
 
-    const goToRegiter = async () => {
+    const goToRegister = async () => {
       await router.push({ name: "register_news" });
     };
 
@@ -61,7 +69,7 @@ export default {
 
     return {
       arrayOfNews,
-      goToRegiter,
+      goToRegister,
       goToEdition,
       removeNews,
     };
@@ -82,18 +90,6 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-}
-
-.sub-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.sub-header__title {
-  font-size: 1.3rem;
-  height: fit-content;
-  color: #677783;
 }
 
 a {

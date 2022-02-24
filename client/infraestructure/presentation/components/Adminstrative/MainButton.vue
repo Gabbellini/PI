@@ -1,7 +1,7 @@
 <template>
   <button class="btn" @click="$emit('click')">
-    <span v-if="image" class="btn__icon" role="none">{{ image }}</span>
-    <span class="btn__title"> {{ title }} </span>
+    <span class="btn__icon">{{ image }}</span>
+    <span :class="['btn__title']"> {{ title }}</span>
   </button>
 </template>
 
@@ -11,11 +11,10 @@ export default {
   props: {
     title: {
       type: String,
-      required: false,
+      required: true,
     },
     image: {
-      required: false,
-      type: String,
+      required: true,
     },
   },
 };
@@ -43,14 +42,11 @@ export default {
   border-radius: 2px;
 }
 
-.btn:hover, .btn:focus {
+.btn:hover,
+.btn:focus {
   background: #2491e4;
   color: #fff;
   outline: none;
-}
-
-.btn__icon {
-  font-size: 1rem;
 }
 
 @media screen and (max-width: 420px) {
@@ -70,11 +66,11 @@ export default {
     color: #fff;
     background: #2491e4;
 
-    box-shadow: 0 2px 10px #2491e480
+    box-shadow: 0 2px 10px #2491e480;
   }
 
   .btn__icon {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 
   .btn__title {

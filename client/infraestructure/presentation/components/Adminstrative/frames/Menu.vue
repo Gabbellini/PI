@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts">
-import store from '../../../../../infraestructure/repository/store';
+import store from "../../../../../infraestructure/repository/store";
 class Item {
   public title;
   public route;
@@ -37,9 +37,7 @@ export default {
 
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   setup() {
-    const items: Array<Item> = [
-      new Item("Notícias", { name: "news" }, "news"),
-    ];
+    const items: Array<Item> = [new Item("Notícias", { name: "news" }, "news")];
 
     const closeMenu = async () => {
       await store.dispatch("menu_state/setMenuState", false);
